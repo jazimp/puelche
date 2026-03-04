@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puelche — Indumentaria Outdoor · San Martín de los Andes</title>
+  <meta name="description" content="Puelche: multimarca de indumentaria outdoor lifestyle en el corazón de la Patagonia andina. San Martín de los Andes." />
+
+  <!-- Cormorant Infant (display) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <!-- Satoshi (body) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --verde:  #1E2F28;
+      --marron: #7A5A3C;
+      --gris:   #B7B9B6;
+      --hueso:  #F1EFEA;
+      --display: 'Cormorant Infant', Georgia, serif;
+      --body:    'Satoshi', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--body);
+      background: var(--hueso);
+      color: var(--verde);
+      overflow-x: hidden;
+      cursor: none;
+      font-size: 17px;
+    }
+
+    /* ─── CURSOR ─── */
+    .cur { position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:difference; }
+    .cur-dot  { width:9px; height:9px; background:#fff; border-radius:50%; }
+    .cur-ring { width:36px; height:36px; border:1px solid rgba(255,255,255,.45); border-radius:50%; }
+
+    /* ─── NAV ─── */
+    #nav {
+      position: fixed; top:0; left:0; right:0; z-index:200;
+      padding: 1.8rem 3.5rem;
+      display: flex; align-items:center; justify-content:space-between;
+      transition: background .4s, backdrop-filter .4s, padding .3s;
+    }
+    #nav.scrolled {
+      background: rgba(241,239,234,.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(30,47,40,.07);
+      padding: 1rem 3.5rem;
+    }
+    .nav-logo img {
+      height: 9rem; width: auto;
+      filter: brightness(0) invert(1) drop-shadow(0 1px 10px rgba(0,0,0,.35));
+      transition: filter .35s, height .3s;
+    }
+    #nav.scrolled .nav-logo img {
+      filter: none;
+      height: 3.5rem;
+    }
+    .nav-links { display:flex; gap:2.6rem; list-style:none; }
+    .nav-links a {
+      font-family: var(--body);
+      font-size: .72rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+      color: rgba(241,239,234,.82); text-decoration:none;
+      transition: color .2s; cursor:pointer;
+    }
+    #nav.scrolled .nav-links a { color: rgba(30,47,40,.5); }
+    .nav-links a:hover,
+    #nav.scrolled .nav-links a:hover { color: var(--verde); }
+    #nav.scrolled .nav-links a:hover { color: var(--verde); }
+    .nav-cta {
+      display:inline-flex; align-items:center; gap:.5rem;
+      font-family: var(--body);
+      font-size:.72rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+      color: rgba(241,239,234,.8); text-decoration:none;
+      border: 1px solid rgba(241,239,234,.45); padding:.65rem 1.5rem;
+      transition: all .22s; cursor:pointer;
+    }
+    #nav.scrolled .nav-cta { color:var(--verde); border-color:rgba(30,47,40,.25); }
+    .nav-cta:hover,
+    #nav.scrolled .nav-cta:hover { background:var(--verde); color:var(--hueso); border-color:var(--verde); }
+    /* hamburger */
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; padding:6px; cursor:pointer; }
+    .hamburger span { display:block; width:24px; height:1.5px; background:var(--hueso); transition:all .3s; transform-origin:center; }
+    #nav.scrolled .hamburger span { background:var(--verde); }
+
+    /* ─── MOBILE MENU ─── */
+    #mobile-menu {
+      position:fixed; inset:0; z-index:190;
+      background: var(--verde);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.8rem;
+      opacity:0; pointer-events:none;
+    }
+    #mobile-menu a {
+      font-family: var(--display);
+      font-size: 3rem; font-weight:400; font-style:italic;
+      color:var(--hueso); text-decoration:none; cursor:pointer;
+      transition: color .2s;
+    }
+    #mobile-menu a:hover { color:var(--gris); }
+    #mobile-menu .mobile-sub {
+      font-family: var(--body);
+      font-size:.72rem; font-weight:400; letter-spacing:.22em; text-transform:uppercase;
+      color: rgba(241,239,234,.4); margin-top:.5rem;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO — full bleed
+    ═══════════════════════════════════════ */
+    #hero {
+      position:relative; min-height:100svh;
+      display:flex; flex-direction:column; justify-content:flex-end;
+      overflow:hidden;
+    }
+    /* Photo layer */
+    .hero-bg {
+      position:absolute; inset:0; z-index:0;
+    }
+    #hero-photo {
+      width:100%; height:100%;
+      object-fit:cover; object-position:bottom center;
+      display:block;
+      transform: scale(1.06);
+    }
+    /* Overlay gradient: darker at bottom for text legibility */
+    .hero-overlay {
+      position:absolute; inset:0; z-index:1;
+      background: linear-gradient(
+        170deg,
+        rgba(12,22,17,.42) 0%,
+        rgba(12,22,17,.12) 35%,
+        rgba(12,22,17,.55) 68%,
+        rgba(12,22,17,.92) 100%
+      );
+    }
+    /* Grain texture */
+    .hero-grain {
+      position:absolute; inset:0; z-index:2; pointer-events:none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity:.035;
+    }
+    /* Content */
+    .hero-content {
+      position:relative; z-index:3;
+      padding: 0 5rem 5.5rem;
+      display:grid; grid-template-columns:1fr auto;
+      align-items:flex-end; gap:3rem;
+    }
+    .hero-left { max-width: 700px; }
+    .hero-eyebrow {
+      display:flex; align-items:center; gap:1rem; margin-bottom:2.2rem; opacity:0;
+    }
+    .hero-eyebrow-line { width:2rem; height:1px; background:var(--marron); flex-shrink:0; }
+    .hero-eyebrow-text {
+      font-family:var(--body);
+      font-size:.7rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase;
+      color: rgba(222, 230, 218, 0.75);
+    }
+    .hero-headline {
+      font-family: var(--display);
+      font-size: clamp(5rem, 7vw, 9rem);
+      font-weight: 300; line-height: .92;
+      color: var(--hueso); margin-bottom:2rem; opacity:0;
+    }
+    .hero-headline em { font-style:italic; color:var(--gris); }
+    .hero-desc {
+      font-family:var(--body);
+      font-size: 1.05rem; font-weight:300; line-height:1.8;
+      color: rgba(241, 239, 234, 0.759); max-width:480px; margin-bottom:2.6rem; opacity:0;
+    }
+    .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; }
+    /* Right side badge */
+    .hero-right {
+      display:flex; flex-direction:column; align-items:flex-end; gap:1.4rem;
+      opacity:0; padding-bottom:.4rem;
+    }
+    .hero-badge {
+      display:inline-flex; flex-direction:column; align-items:flex-end; gap:.2rem;
+    }
+    .hero-badge-region {
+      font-family:var(--body);
+      font-size:.6rem; font-weight:500; letter-spacing:.26em; text-transform:uppercase;
+      color:rgba(241,239,234,.35);
+    }
+    .hero-badge-city {
+      font-family: var(--display);
+      font-size:1.4rem; font-weight:400; font-style:italic;
+      color:rgba(241,239,234,.7); letter-spacing:.01em;
+    }
+    .hero-year {
+      font-family:var(--display);
+      font-size:4.5rem; font-weight:300;
+      color:rgba(241,239,234,.08); line-height:1;
+      user-select:none;
+    }
+    /* Top vignette for nav legibility */
+    .hero-nav-vignette {
+      position:absolute; inset:0;
+      height:160px;
+      background: linear-gradient(to bottom, rgba(10,18,14,.55) 0%, transparent 100%);
+      z-index:1;
+      pointer-events:none;
+    }
+    /* Altitude / coordinate stat boxes */
+    .hero-stat-box {
+      display:inline-flex; flex-direction:column; align-items:center;
+      border: 1px solid rgba(241,239,234,.2);
+      padding: .9rem 1.4rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(12,18,14,.25);
+      gap: .15rem;
+    }
+    .hero-stat-num {
+      font-family: var(--display);
+      font-size: 2.6rem; font-weight: 300; line-height: 1;
+      color: var(--hueso);
+    }
+    .hero-stat-label {
+      font-family: var(--body);
+      font-size: .58rem; font-weight: 500;
+      letter-spacing: .24em; text-transform: uppercase;
+      color: rgba(183,185,182,.7);
+    }
+    .hero-stat-box--sm { padding: .55rem 1.1rem; }
+    .hero-stat-coord {
+      font-family: var(--body);
+      font-size: .6rem; font-weight: 400; letter-spacing: .12em;
+      color: rgba(241,239,234,.45);
+    }
+    /* Scroll hint */
+    .scroll-hint {
+      position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:.5rem; z-index:3; opacity:0;
+    }
+    @keyframes scroll-pulse { 0%,100%{opacity:.2;transform:scaleY(1)} 50%{opacity:.6;transform:scaleY(1.5)} }
+    .scroll-line { width:1px; height:2.4rem; background:rgba(241,239,234,.35); animation:scroll-pulse 2.2s ease-in-out infinite; }
+    .scroll-label { font-family:var(--body); font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; color:rgba(241,239,234,.25); }
+
+    /* ─── BUTTONS ─── */
+    .btn { display:inline-flex; align-items:center; gap:.55rem; font-family:var(--body); font-size:.72rem; font-weight:500; letter-spacing:.13em; text-transform:uppercase; text-decoration:none; padding:.88rem 1.85rem; transition:all .22s; cursor:pointer; border:none; }
+    .btn svg { width:14px; height:14px; flex-shrink:0; }
+    .btn-p   { background:var(--hueso); color:var(--verde); }
+    .btn-p:hover { background:var(--marron); color:var(--hueso); }
+    .btn-g   { background:transparent; color:var(--hueso); border:1px solid rgba(241,239,234,.3); }
+    .btn-g:hover { border-color:rgba(241,239,234,.7); background:rgba(241,239,234,.06); }
+    .btn-dk  { background:var(--verde); color:var(--hueso); }
+    .btn-dk:hover { background:var(--marron); }
+    .btn-dkg { background:transparent; color:var(--verde); border:1px solid rgba(30,47,40,.22); }
+    .btn-dkg:hover { background:var(--verde); color:var(--hueso); border-color:var(--verde); }
+    .btn-inv-g { background:transparent; color:var(--hueso); border:1px solid rgba(241,239,234,.22); }
+    .btn-inv-g:hover { border-color:rgba(241,239,234,.55); background:rgba(241,239,234,.07); }
+
+    /* ─── MARQUEE ─── */
+    .marquee-strip { background:var(--marron); padding:.9rem 0; overflow:hidden; white-space:nowrap; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-inner { display:inline-flex; animation:marquee 30s linear infinite; }
+    .marquee-item { font-family:var(--body); font-size:.64rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:rgba(241,239,234,.6); padding:0 2rem; }
+    .marquee-dot { color:rgba(241,239,234,.18); padding:0 .2rem; }
+
+    /* ─── SECTION UTILS ─── */
+    .stag { font-family:var(--body); font-size:.72rem; font-weight:500; letter-spacing:.3em; text-transform:uppercase; color:var(--marron); display:block; }
+    .stag-inv { color:var(--marron); }
+
+    /* ─── NOSOTROS — Tríptico ─── */
+    #nosotros { background: var(--hueso); padding: 7rem 0; }
+    .nos-tri {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr 1fr;
+      gap: 4px;
+      align-items: center;
+    }
+    .nos-tri-side {
+      overflow: hidden;
+      height: 52vh; min-height: 300px;
+    }
+    .nos-tri-center {
+      position: relative;
+      overflow: hidden;
+      height: 68vh; min-height: 420px;
+    }
+    .nos-tri-side img,
+    .nos-tri-center img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      filter: brightness(.82) saturate(.78);
+      display: block;
+      transition: transform 1.1s ease;
+    }
+    .nos-tri-side:hover img,
+    .nos-tri-center:hover img { transform: scale(1.04); }
+    .nos-tri-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2.5rem 2.8rem 3rem;
+      background: linear-gradient(to bottom, transparent, rgba(18,30,24,.8));
+    }
+    .nos-tri-stag { color: rgba(241,239,234,.5); margin-bottom: .9rem; }
+    .nos-tri-h2 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 2.6vw, 3.6rem);
+      font-weight: 300; line-height: .9;
+      color: var(--hueso); margin-bottom: 1.6rem;
+    }
+    .nos-tri-h2 em { font-style: italic; color: #C8956C; }
+    .nos-tri-ctas { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .nos-tri-ctas .btn-dkg { color: var(--hueso); border-color: rgba(241,239,234,.3); }
+    .nos-tri-ctas .btn-dkg:hover { background: var(--hueso); color: var(--verde); border-color: var(--hueso); }
+
+
+    /* ═══════════════════════════════════════
+       PARALLAX SECTION
+    ═══════════════════════════════════════ */
+    .parallax-section {
+      position:relative; height:65vh;
+      display:flex; align-items:center; justify-content:center;
+      background-image: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=1800&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 40%;
+      background-attachment: fixed;
+    }
+    .parallax-overlay {
+      position:absolute; inset:0; z-index:1;
+      background: linear-gradient(160deg, rgba(12,22,17,.45), rgba(12,22,17,.75));
+    }
+    .parallax-content {
+      position:relative; z-index:2;
+      text-align:center; padding:0 3rem;
+    }
+    .parallax-quote {
+      font-family:var(--display);
+      font-size: clamp(2.4rem, 5vw, 5.5rem);
+      font-weight:300; font-style:italic;
+      color:var(--hueso); line-height:1.1;
+      max-width:820px;
+    }
+    .parallax-quote em { font-style:normal; color:var(--gris); }
+    .parallax-attr {
+      font-family:var(--body);
+      font-size:.68rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase;
+      color:rgba(241,239,234,.35); margin-top:2rem; display:block;
+    }
+
+    /* ─── PILARES ─── */
+    #pilares {
+      background:var(--verde); padding:8rem 5rem;
+      position:relative; overflow:hidden;
+    }
+    #pilares::before {
+      content:''; position:absolute; top:-20%; right:-10%;
+      width:55vw; height:55vw; border-radius:50%;
+      background:radial-gradient(circle, rgba(122,90,60,.1) 0%, transparent 65%);
+      pointer-events:none;
+    }
+    .pilares-wm {
+      position:absolute; right:-4rem; bottom:-4rem;
+      width:34rem; opacity:.035; pointer-events:none;
+      filter: brightness(0) invert(1);
+    }
+    .pilares-hd { max-width:90rem; margin:0 auto 5rem; }
+    .pilares-title {
+      font-family:var(--display);
+      font-size:clamp(3.2rem, 6vw, 6.5rem);
+      font-weight:300; line-height:.9;
+      color:var(--hueso);
+    }
+    .pilares-title em { font-style:italic; color:var(--gris); }
+    .pilares-grid {
+      max-width:90rem; margin:0 auto;
+      display:grid; grid-template-columns:repeat(4,1fr);
+      border-top:1px solid rgba(183,185,182,.1);
+      border-left:1px solid rgba(183,185,182,.1);
+    }
+    .pilar {
+      border-right:1px solid rgba(183,185,182,.1);
+      border-bottom:1px solid rgba(183,185,182,.1);
+      padding:3rem 2.4rem;
+      position:relative; overflow:hidden;
+      transition:background .28s; cursor:default;
+    }
+    .pilar:hover { background:rgba(183,185,182,.04); }
+    .pilar-num {
+      position:absolute; top:-1rem; right:1.2rem;
+      font-family:var(--display); font-size:clamp(5rem,9vw,8rem); font-weight:300;
+      color:rgba(241,239,234,.05); line-height:1;
+      user-select:none; pointer-events:none;
+    }
+    .pilar-icon { width:24px; height:24px; color:rgba(241,239,234,.35); margin-bottom:2rem; }
+    .pilar-name {
+      font-family:var(--display); font-size:1.5rem; font-weight:400; font-style:italic;
+      color:var(--hueso); margin-bottom:.8rem;
+    }
+    .pilar-desc { font-size:.88rem; font-weight:300; line-height:1.75; color:rgba(241,239,234,.4); }
+
+    /* ─── MARCAS ─── */
+    #marcas { background:var(--hueso); padding:8rem 5rem; }
+    .marcas-hd {
+      max-width:90rem; margin:0 auto 5rem;
+      display:flex; align-items:flex-end; justify-content:space-between; gap:3rem;
+    }
+    .marcas-title {
+      font-family:var(--display);
+      font-size:clamp(3.2rem, 6vw, 6.5rem);
+      font-weight:300; line-height:.9; color:var(--verde);
+    }
+    .marcas-title em { font-style:italic; color:var(--marron); }
+    .marcas-sub {
+      font-size:1rem; font-weight:300; line-height:1.75;
+      color:rgba(30,47,40,.5); max-width:320px; text-align:right;
+    }
+    .marcas-grid {
+      max-width:90rem; margin:0 auto;
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:1px; background:rgba(30,47,40,.1);
+    }
+    .brand-card {
+      background:var(--hueso); min-height:130px;
+      display:flex; align-items:center; justify-content:center;
+      padding:2.5rem; cursor:pointer;
+      transition:background .22s;
+    }
+    .brand-card:hover { background:rgba(30,47,40,.04); }
+    .brand-ph {
+      font-family:var(--body); font-size:.78rem; font-weight:700;
+      letter-spacing:.22em; text-transform:uppercase;
+      color:rgba(30,47,40,.18); transition:color .22s;
+    }
+    .brand-card:hover .brand-ph { color:rgba(30,47,40,.5); }
+
+    /* ─── LOCAL ─── */
+    #local { display:grid; grid-template-columns:1fr 1fr; min-height:80vh; }
+    .local-content {
+      background:var(--verde); padding:7rem 5.5rem;
+      display:flex; flex-direction:column; justify-content:center;
+      position:relative; overflow:hidden;
+    }
+    .local-wm {
+      position:absolute; left:-3rem; bottom:-3rem;
+      width:22rem; opacity:.04; pointer-events:none;
+      filter:brightness(0) invert(1);
+    }
+    .local-headline {
+      font-family:var(--display);
+      font-size:clamp(2.8rem, 4.5vw, 5rem);
+      font-weight:300; line-height:.9;
+      color:var(--hueso); margin-bottom:2rem;
+    }
+    .local-headline em { font-style:italic; color:var(--gris); }
+    .local-desc {
+      font-size:1rem; font-weight:300; line-height:1.8;
+      color:rgba(241,239,234,.45); max-width:360px; margin-bottom:3rem;
+    }
+    .local-info { display:flex; flex-direction:column; gap:1rem; margin-bottom:3rem; }
+    .local-info-item { display:flex; align-items:center; gap:.9rem; }
+    .local-info-ic { width:15px; height:15px; color:rgba(241,239,234,.28); flex-shrink:0; }
+    .local-info-tx { font-size:.88rem; font-weight:300; color:rgba(241,239,234,.48); }
+    .local-ctas { display:flex; gap:1rem; flex-wrap:wrap; }
+    .local-photo { position:relative; overflow:hidden; }
+    .local-photo img {
+      width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
+      filter:brightness(.88) saturate(.78);
+      transition:transform .9s ease;
+    }
+    .local-photo:hover img { transform:scale(1.04); }
+    .local-overlay {
+      position:absolute; inset:0; z-index:1;
+      background:linear-gradient(to right, rgba(30,47,40,.3) 0%, transparent 50%);
+    }
+    /* btn inverse primary */
+    .btn-inv-p { background:var(--hueso); color:var(--verde); }
+    .btn-inv-p:hover { background:var(--marron); color:var(--hueso); }
+
+    /* ─── FOOTER ─── */
+    footer { background:var(--verde); padding:4rem 5rem; }
+    .footer-inner {
+      max-width:90rem; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:2rem; flex-wrap:wrap;
+    }
+    .footer-logo img { height:5rem; width:auto; opacity:.55; filter:brightness(0) invert(1); }
+    .footer-nav { display:flex; gap:2.4rem; list-style:none; }
+    .footer-nav a {
+      font-size:.68rem; font-weight:400; letter-spacing:.18em; text-transform:uppercase;
+      color:rgba(241,239,234,.27); text-decoration:none; transition:color .2s; cursor:pointer;
+    }
+    .footer-nav a:hover { color:rgba(241,239,234,.65); }
+    .footer-right { display:flex; align-items:center; gap:1.8rem; }
+    .footer-social { display:flex; gap:1rem; }
+    .footer-social a { color:rgba(241,239,234,.27); transition:color .2s; cursor:pointer; }
+    .footer-social a:hover { color:rgba(241,239,234,.7); }
+    .footer-copy { font-size:.6rem; letter-spacing:.14em; color:rgba(241,239,234,.18); }
+
+    /* ─── ANIM INIT ─── */
+    .ai { opacity:0; }
+
+    /* ─── FOCUS ─── */
+    a:focus-visible, button:focus-visible { outline:2px solid var(--marron); outline-offset:3px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width:1100px) {
+      .hero-content { padding:0 3rem 5rem; grid-template-columns:1fr; }
+      .hero-right { display:none; }
+      .nos-tri { grid-template-columns: 1fr; gap: 3px; }
+      .nos-tri-side { display: none; }
+      .nos-tri-center { height: 65vw; min-height: 340px; }
+      .pilares-grid { grid-template-columns:repeat(2,1fr); }
+      .marcas-hd { flex-direction:column; align-items:flex-start; }
+      .marcas-sub { text-align:left; }
+      .marcas-grid { grid-template-columns:repeat(2,1fr); }
+      #local { grid-template-columns:1fr; }
+      .local-photo { min-height:55vw; }
+      .local-photo img { position:relative; height:55vw; }
+      #pilares, #marcas, .local-content, footer { padding-left:3rem; padding-right:3rem; }
+    }
+    @media (max-width:768px) {
+      body { cursor:auto; font-size:16px; }
+      .cur, .cur-ring { display:none; }
+      #nav { padding:1.2rem 1.5rem; }
+      #nav.scrolled { padding:.85rem 1.5rem; }
+      .nav-logo img { height: 6rem; }
+      #nav.scrolled .nav-logo img { height: 3rem; }
+      .nav-links, .nav-cta { display:none; }
+      .hamburger { display:flex; }
+      .hero-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(12,22,17,.6)  0%,
+          rgba(12,22,17,.4) 30%,
+          rgba(12,22,17,.72) 62%,
+          rgba(12,22,17,.96) 100%
+        );
+      }
+      #hero-photo { object-position: center 20%; }
+      .hero-content { padding:0 1.8rem 4rem; }
+      .nos-tri-overlay { padding: 1.8rem 1.8rem 2.2rem; }
+      #pilares, #marcas { padding-left:1.8rem; padding-right:1.8rem; }
+      .local-content { padding:4rem 1.8rem; }
+      .pilares-grid { grid-template-columns:1fr; }
+      .marcas-grid { grid-template-columns:repeat(2,1fr); }
+      footer { padding:3rem 1.8rem; }
+      .footer-inner { flex-direction:column; align-items:flex-start; }
+      .parallax-section { height:50vh; background-attachment: scroll; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      .marquee-inner { animation:none; }
+      *, *::before, *::after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="cur" id="cursor"     aria-hidden="true"><div class="cur-dot"></div></div>
+  <div class="cur" id="cursor-ring" aria-hidden="true" style="z-index:9998;"><div class="cur-ring"></div></div>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="nav" role="navigation" aria-label="Navegación principal">
+    <a href="#inicio" class="nav-logo" aria-label="Puelche — Inicio">
+      <img src="logo-puelche.svg" alt="Puelche" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#marcas">Marcas</a></li>
+      <li><a href="#local">El Local</a></li>
+    </ul>
+    <a href="https://www.instagram.com/puelchesma/" target="_blank" rel="noopener"
+       class="nav-cta" aria-label="Instagram @puelchesma">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      @puelchesma
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span id="ham1"></span><span id="ham2"></span><span id="ham3"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" aria-hidden="true">
+    <a href="#nosotros" class="mobile-nav-link">Nosotros</a>
+    <a href="#marcas"   class="mobile-nav-link">Marcas</a>
+    <a href="#local"    class="mobile-nav-link">El Local</a>
+    <a href="https://www.instagram.com/puelchesma/" target="_blank" rel="noopener" class="mobile-sub">@puelchesma</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="inicio" aria-label="Portada">
+    <div id="hero">
+      <!-- Background photo -->
+      <div class="hero-bg">
+        <img
+          id="hero-photo"
+          src="img/bg2.jpg"
+          alt="Persona con indumentaria outdoor en la Patagonia"
+          loading="eager"
+        />
+      </div>
+      <div class="hero-nav-vignette" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-grain"   aria-hidden="true"></div>
+
+      <!-- Content -->
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="hero-eyebrow" id="h-ey">
+            <span class="hero-eyebrow-line" aria-hidden="true"></span>
+            <span class="hero-eyebrow-text">Indumentaria outdoor · San Martín de los Andes</span>
+          </div>
+          <h1 class="hero-headline" id="h-title">
+            Vestí la <br/>montaña.
+          </h1>
+          <p class="hero-desc" id="h-desc">
+            Multimarca de indumentaria outdoor y lifestyle en el corazón de la Patagonia andina. Ropa técnica y de estilo, para el sendero y la ciudad.
+          </p>
+          <div class="hero-ctas" id="h-ctas">
+            <a href="https://www.instagram.com/puelchesma/" target="_blank" rel="noopener" class="btn btn-p">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Ver Instagram
+            </a>
+            <a href="https://wa.me/549223155742221" target="_blank" rel="noopener" class="btn btn-g">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.847L.057 23.572a.5.5 0 0 0 .604.633l5.89-1.541A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.692-.528-5.218-1.447l-.374-.228-3.878 1.015 1.036-3.768-.244-.389A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column badge -->
+        <div class="hero-right" id="h-right">
+          <!-- Altitud -->
+          <div class="hero-stat-box">
+            <span class="hero-stat-num">862</span>
+            <span class="hero-stat-label">m.s.n.m.</span>
+          </div>
+          <!-- Coordenadas -->
+          <div class="hero-stat-box hero-stat-box--sm">
+            <span class="hero-stat-coord">40°09′S · 71°21′O</span>
+          </div>
+          <!-- Ubicación -->
+          <div class="hero-badge">
+            <span class="hero-badge-region">Patagonia Andina</span>
+            <span class="hero-badge-city">San Martín de los Andes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint" id="h-scroll" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARQUEE ═══ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <span class="marquee-item">Indumentaria</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Outdoor</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Trekking</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Ropa Técnica</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Estilo</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Patagonia</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">San Martín de los Andes</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Multimarca</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Aventura</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Cordillera</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Indumentaria</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Outdoor</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Trekking</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Ropa Técnica</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Estilo</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Patagonia</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">San Martín de los Andes</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Multimarca</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Aventura</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Cordillera</span><span class="marquee-dot">·</span>
+    </div>
+  </div>
+
+  <!-- ═══ NOSOTROS B — Tríptico ═══ -->
+  <section id="nosotros" aria-labelledby="nos-b-h">
+    <div class="nos-tri">
+
+      <div class="nos-tri-side">
+        <img
+          src="img/img1.jpg"
+          alt="Paisaje patagónico" loading="lazy"
+        />
+      </div>
+
+      <div class="nos-tri-center">
+        <img
+          src="img/img7.jpg"
+          alt="Sendero en el bosque" loading="lazy"
+        />
+        <div class="nos-tri-overlay" style="display: none;">
+          <h2 class="nos-tri-h2 ai" id="nos-b-h">
+            El puelche baja<br>de la <em>cordillera.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="nos-tri-side">
+        <img
+          src="img/img4.jpeg"
+          alt="Cordillera patagónica" loading="lazy"
+        />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══ PARALLAX ═══ -->
+  <section class="parallax-section" aria-hidden="true">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content">
+      <p class="parallax-quote ai" id="pq">
+        Ropa que <em>funciona</em><br/>donde vivís.
+      </p>
+      <span class="parallax-attr">Puelche · San Martín de los Andes</span>
+    </div>
+  </section>
+
+  <!-- ═══ PILARES ═══ -->
+  <section id="pilares" aria-labelledby="pilares-h">
+    <div class="pilares-hd ai" id="pil-hd">
+      <span class="stag-inv stag" style="margin-bottom:1.8rem">Lo que nos mueve</span>
+      <h2 id="pilares-h" class="pilares-title">
+        Cuatro pilares,<br/><em>una identidad.</em>
+      </h2>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar ai pilar-item">
+        <span class="pilar-num" aria-hidden="true">01</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="pilar-icon" aria-hidden="true"><path d="M3 17l6-10 3 4 2-3 7 9H3z"/><path d="M3 20h18"/></svg>
+        <div class="pilar-name">Naturaleza</div>
+        <p class="pilar-desc">El monte, los ríos y la cordillera. Vivimos el entorno que viste la ropa que vendemos.</p>
+      </div>
+      <div class="pilar ai pilar-item">
+        <span class="pilar-num" aria-hidden="true">02</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="pilar-icon" aria-hidden="true"><circle cx="12" cy="5" r="1"/><path d="M10 11l2-6 2 6"/><path d="M7 21l3-5 2 2 2-2 3 5"/><path d="M9 11H7l-1 4h2M15 11h2l1 4h-2"/></svg>
+        <div class="pilar-name">Trekking</div>
+        <p class="pilar-desc">Prendas que aguantan senderos reales. Técnica, abrigo y funcionalidad sin resignar estilo.</p>
+      </div>
+      <div class="pilar ai pilar-item">
+        <span class="pilar-num" aria-hidden="true">03</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="pilar-icon" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="pilar-name">Estilo</div>
+        <p class="pilar-desc">Curadamos marcas con diseño y carácter. Porque la indumentaria outdoor también puede ser hermosa.</p>
+      </div>
+      <div class="pilar ai pilar-item">
+        <span class="pilar-num" aria-hidden="true">04</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="pilar-icon" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        <div class="pilar-name">Aventura</div>
+        <p class="pilar-desc">Más que una tienda, un punto de encuentro para los que se mueven, exploran y visten bien haciéndolo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARCAS ═══ -->
+  <section id="marcas" aria-labelledby="marcas-h">
+    <div class="marcas-hd ai" id="mar-hd">
+      <div>
+        <span class="stag" style="margin-bottom:1.4rem">Nuestro mix</span>
+        <h2 id="marcas-h" class="marcas-title">
+          Marcas que<br/><em>nos definen.</em>
+        </h2>
+      </div>
+      <p class="marcas-sub">
+        Indumentaria curada. Solo marcas que entienden el movimiento, el clima y el diseño.
+      </p>
+    </div>
+    <div class="marcas-grid">
+      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 01</span></div>
+      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 02</span></div>
+      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 03</span></div>
+      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 04</span></div>
+      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 05</span></div>
+      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 06</span></div>
+      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 07</span></div>
+      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 08</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ LOCAL ═══ -->
+  <section id="local" aria-labelledby="local-h">
+    <div class="local-content">
+      <div class="ai" id="local-in" style="position:relative;z-index:1">
+        <span class="stag-inv stag" style="margin-bottom:2rem">Visitanos</span>
+        <h2 id="local-h" class="local-headline">
+          Estamos en<br/><em>San Martín<br/>de los Andes.</em>
+        </h2>
+        <p class="local-desc">
+          Vení a ver y probar la ropa. Tenemos local físico con toda la colección disponible. También por Instagram y WhatsApp respondemos al toque.
+        </p>
+        <div class="local-info">
+          <div class="local-info-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="local-info-ic" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="local-info-tx">San Martín de los Andes, Neuquén · Patagonia</span>
+          </div>
+          <div class="local-info-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="local-info-ic" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span class="local-info-tx">@puelchesma</span>
+          </div>
+        </div>
+        <div class="local-ctas">
+          <a href="https://www.instagram.com/puelchesma/" target="_blank" rel="noopener" class="btn btn-inv-p">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Ver en Instagram
+          </a>
+          <a href="https://wa.me/549223155742221" target="_blank" rel="noopener" class="btn btn-inv-g">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.847L.057 23.572a.5.5 0 0 0 .604.633l5.89-1.541A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.692-.528-5.218-1.447l-.374-.228-3.878 1.015 1.036-3.768-.244-.389A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Photo -->
+    <div class="local-photo">
+      <img
+        src="img/montania.png"
+        alt="Lago y montañas de San Martín de los Andes"
+        loading="lazy"
+      />
+      <div class="local-overlay" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo-puelche.svg" alt="Puelche" />
+      </div>
+      <ul class="footer-nav">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#marcas">Marcas</a></li>
+        <li><a href="#local">El Local</a></li>
+      </ul>
+      <div class="footer-right">
+        <div class="footer-social">
+          <a href="https://www.instagram.com/puelchesma/" target="_blank" rel="noopener" aria-label="Instagram de Puelche">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/549223155742221" target="_blank" rel="noopener" aria-label="WhatsApp de Puelche">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.12 1.531 5.847L.057 23.572a.5.5 0 0 0 .604.633l5.89-1.541A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.692-.528-5.218-1.447l-.374-.228-3.878 1.015 1.036-3.768-.244-.389A10 10 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </a>
+        </div>
+        <span class="footer-copy">© 2026 Puelche</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ─── Cursor ──────────────────────────────────────────
+    const dot  = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    const isFine = window.matchMedia('(pointer:fine)').matches;
+
+    if (isFine) {
+      window.addEventListener('mousemove', ({ clientX: x, clientY: y }) => {
+        gsap.set(dot,  { x, y });
+        gsap.to(ring,  { x, y, duration:.28, ease:'power2.out' });
+      }, { passive: true });
+
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          gsap.to(ring, { scale:1.8, duration:.2 });
+          gsap.to(dot,  { scale:.5,  duration:.2 });
+        });
+        el.addEventListener('mouseleave', () => {
+          gsap.to(ring, { scale:1,   duration:.2 });
+          gsap.to(dot,  { scale:1,   duration:.2 });
+        });
+      });
+    }
+
+    // ─── Nav ─────────────────────────────────────────────
+    const nav = document.getElementById('nav');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // ─── Hero entrance ───────────────────────────────────
+    gsap.set(['#h-ey','#h-title','#h-desc','#h-ctas','#h-right','#h-scroll'], { opacity:0, y:30 });
+
+    const heroTl = gsap.timeline({ delay:.15 });
+    heroTl
+      .to('#h-ey',     { opacity:1, y:0, duration:.75, ease:'power3.out' }, .25)
+      .to('#h-title',  { opacity:1, y:0, duration:1,   ease:'power3.out' }, .45)
+      .to('#h-desc',   { opacity:1, y:0, duration:.85, ease:'power3.out' }, .7)
+      .to('#h-ctas',   { opacity:1, y:0, duration:.75, ease:'power3.out' }, .9)
+      .to('#h-right',  { opacity:1, y:0, duration:.7,  ease:'power3.out' }, .75)
+      .to('#h-scroll', { opacity:1, y:0, duration:.6,  ease:'power2.out' }, 1.5);
+
+    // Hero photo subtle zoom out on load
+    gsap.to('#hero-photo', { scale:1, duration:2.5, ease:'power2.out', delay:.1 });
+
+    // Hero photo scroll parallax
+    gsap.to('#hero-photo', {
+      yPercent: 16,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#inicio', start:'top top', end:'bottom top', scrub:1.5,
+      }
+    });
+
+    // Parallax quote reveal
+    gsap.fromTo('#pq',
+      { opacity:0, y:40 },
+      { opacity:1, y:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.parallax-section', start:'top 75%' } }
+    );
+
+    // ─── Helper: reveal up ────────────────────────────────
+    function revUp(el, { delay=0, trigger=el } = {}) {
+      gsap.fromTo(el,
+        { opacity:0, y:45 },
+        { opacity:1, y:0, duration:.95, ease:'power3.out', delay,
+          scrollTrigger: { trigger, start:'top 88%' } }
+      );
+    }
+
+    // ─── Nosotros B (tríptico) ────────────────────────────
+    revUp('#tag-nos-b', { trigger: '#nosotros' });
+    gsap.fromTo('#nos-b-h',
+      { opacity: 0, y: 45 },
+      { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '#nosotros', start: 'top 78%' } }
+    );
+
+
+    // ─── Pilares ──────────────────────────────────────────
+    revUp('#pil-hd');
+    gsap.fromTo('.pilar-item',
+      { opacity:0, y:50 },
+      { opacity:1, y:0, duration:.85, ease:'power3.out', stagger:.1,
+        scrollTrigger:{ trigger:'.pilares-grid', start:'top 80%' } }
+    );
+
+    // ─── Marcas ───────────────────────────────────────────
+    revUp('#mar-hd');
+    gsap.fromTo('.brand-item',
+      { opacity:0, scale:.94 },
+      { opacity:1, scale:1, duration:.6, ease:'power2.out', stagger:.07,
+        scrollTrigger:{ trigger:'.marcas-grid', start:'top 82%' } }
+    );
+
+    // ─── Local ────────────────────────────────────────────
+    revUp('#local-in');
+
+    // ─── Mobile menu ─────────────────────────────────────
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const ham1 = document.getElementById('ham1');
+    const ham2 = document.getElementById('ham2');
+    const ham3 = document.getElementById('ham3');
+    let menuOpen = false;
+
+    function openMenu() {
+      menuOpen = true;
+      hamburger.setAttribute('aria-expanded','true');
+      mobileMenu.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      gsap.to(mobileMenu, { opacity:1, pointerEvents:'auto', duration:.35, ease:'power2.out' });
+      gsap.to(ham1, { rotation:45,  y:6.5, duration:.3 });
+      gsap.to(ham2, { opacity:0,           duration:.18 });
+      gsap.to(ham3, { rotation:-45, y:-6.5, duration:.3 });
+    }
+    function closeMenu() {
+      menuOpen = false;
+      hamburger.setAttribute('aria-expanded','false');
+      mobileMenu.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      gsap.to(mobileMenu, { opacity:0, pointerEvents:'none', duration:.28, ease:'power2.in' });
+      gsap.to(ham1, { rotation:0, y:0, duration:.3 });
+      gsap.to(ham2, { opacity:1,       duration:.2 });
+      gsap.to(ham3, { rotation:0, y:0, duration:.3 });
+    }
+
+    hamburger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+    document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', closeMenu));
+
+    // ─── Smooth scroll ────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - nav.offsetHeight - 16, behavior:'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
