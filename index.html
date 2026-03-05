@@ -597,6 +597,17 @@
       .footer-inner { flex-direction:column; align-items:flex-start; }
       .parallax-section { height:50vh; background-attachment: scroll; }
     }
+    @media (max-width:480px) {
+      #marcas { padding:5rem 1rem; }
+      .marcas-hd { flex-direction:column; align-items:flex-start; margin-bottom:2.5rem; }
+      .marcas-title { font-size:2rem; }
+      .marcas-sub { text-align:left; font-size:.9rem; max-width:100%; }
+      .marcas-grid { grid-template-columns:repeat(2,1fr); gap:0; }
+      .brand-card { min-height:100px; padding:1.5rem 1rem; }
+      .brand-card img { max-height:3rem; max-width:10rem; }
+      .pilares-grid { padding:0 1rem; }
+      .pilar { padding:2rem 1.5rem; }
+    }
     @media (prefers-reduced-motion:reduce) {
       .marquee-inner { animation:none; }
       *, *::before, *::after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
