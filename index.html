@@ -6,6 +6,36 @@
   <title>Puelche — Indumentaria Outdoor · San Martín de los Andes</title>
   <meta name="description" content="Puelche: multimarca de indumentaria outdoor lifestyle en el corazón de la Patagonia andina. San Martín de los Andes." />
 
+  <!-- SEO adicional -->
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="indumentaria outdoor, Patagonia, San Martín de los Andes, ropa trekking, multimarca, Rip Curl, Billabong, Volcom, O'Neill, Montagne, Ombak, Martha, C1rca" />
+  <meta name="author" content="Puelche" />
+  <meta name="theme-color" content="#1E2F28" />
+  <link rel="canonical" href="https://puelcheindumentaria.com/" />
+
+  <!-- Geo -->
+  <meta name="geo.region" content="AR-Q" />
+  <meta name="geo.placename" content="San Martín de los Andes, Neuquén" />
+  <meta name="geo.position" content="-40.14149;-71.34003" />
+  <meta name="ICBM" content="-40.14149, -71.34003" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Puelche" />
+  <meta property="og:title" content="Puelche — Indumentaria Outdoor · San Martín de los Andes" />
+  <meta property="og:description" content="Puelche: multimarca de indumentaria outdoor lifestyle en el corazón de la Patagonia andina. San Martín de los Andes." />
+  <meta property="og:url" content="https://puelcheindumentaria.com/" />
+  <meta property="og:image" content="https://puelcheindumentaria.com/img/hero1.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_AR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Puelche — Indumentaria Outdoor · San Martín de los Andes" />
+  <meta name="twitter:description" content="Puelche: multimarca de indumentaria outdoor lifestyle en el corazón de la Patagonia andina. San Martín de los Andes." />
+  <meta name="twitter:image" content="https://puelcheindumentaria.com/img/hero1.jpg" />
+
   <!-- Cormorant Infant (display) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,6 +66,10 @@
       font-size: 17px;
     }
 
+    a{
+      color:rgba(241,239,234,.48);
+    }
+
     /* ─── CURSOR ─── */
     .cur { position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:difference; }
     .cur-dot  { width:9px; height:9px; background:#fff; border-radius:50%; }
@@ -56,13 +90,13 @@
       padding: 1rem 3.5rem;
     }
     .nav-logo img {
-      height: 9rem; width: auto;
+      height: 7rem; width: auto;
       filter: brightness(0) invert(1) drop-shadow(0 1px 10px rgba(0,0,0,.35));
       transition: filter .35s, height .3s;
     }
     #nav.scrolled .nav-logo img {
       filter: none;
-      height: 3.5rem;
+      height: 4rem;
     }
     .nav-links { display:flex; gap:2.6rem; list-style:none; }
     .nav-links a {
@@ -143,7 +177,7 @@
     /* Grain texture */
     .hero-grain {
       position:absolute; inset:0; z-index:2; pointer-events:none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-image: "url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")";
       opacity:.035;
     }
     /* Content */
@@ -157,7 +191,7 @@
     .hero-eyebrow {
       display:flex; align-items:center; gap:1rem; margin-bottom:2.2rem; opacity:0;
     }
-    .hero-eyebrow-line { width:2rem; height:1px; background:var(--marron); flex-shrink:0; }
+    .hero-eyebrow-line { width:2rem; height:1px; background:rgba(222, 230, 218, 0.75); flex-shrink:0; }
     .hero-eyebrow-text {
       font-family:var(--body);
       font-size:.7rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase;
@@ -318,7 +352,7 @@
        PARALLAX SECTION
     ═══════════════════════════════════════ */
     .parallax-section {
-      position:relative; height:65vh;
+      position:relative; height:40vh;
       display:flex; align-items:center; justify-content:center;
       background-image: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=1800&q=80&auto=format&fit=crop');
       background-size: cover;
@@ -396,7 +430,7 @@
       font-family:var(--display); font-size:1.5rem; font-weight:400; font-style:italic;
       color:var(--hueso); margin-bottom:.8rem;
     }
-    .pilar-desc { font-size:.88rem; font-weight:300; line-height:1.75; color:rgba(241,239,234,.4); }
+    .pilar-desc { font-size:1.1rem; font-weight:300; line-height:1.3; color:rgba(241,239,234,.4); }
 
     /* ─── MARCAS ─── */
     #marcas { background:var(--hueso); padding:8rem 5rem; }
@@ -411,8 +445,8 @@
     }
     .marcas-title em { font-style:italic; color:var(--marron); }
     .marcas-sub {
-      font-size:1rem; font-weight:300; line-height:1.75;
-      color:rgba(30,47,40,.5); max-width:320px; text-align:right;
+      font-size:1rem; font-weight:400; line-height:1.5;
+      color:rgba(30, 47, 40, 0.712); max-width:360px; text-align:right;
     }
     .marcas-grid {
       max-width:90rem; margin:0 auto;
@@ -422,8 +456,12 @@
     .brand-card {
       background:var(--hueso); min-height:130px;
       display:flex; align-items:center; justify-content:center;
-      padding:2.5rem; cursor:pointer;
+      padding:2.5rem;
       transition:background .22s;
+    }
+    .brand-card img{
+      max-height: 4rem;
+      max-width: 12rem;
     }
     .brand-card:hover { background:rgba(30,47,40,.04); }
     .brand-ph {
@@ -453,11 +491,12 @@
     }
     .local-headline em { font-style:italic; color:var(--gris); }
     .local-desc {
-      font-size:1rem; font-weight:300; line-height:1.8;
+      font-size:1.1rem; font-weight:300; line-height:1.4;
       color:rgba(241,239,234,.45); max-width:360px; margin-bottom:3rem;
     }
     .local-info { display:flex; flex-direction:column; gap:1rem; margin-bottom:3rem; }
     .local-info-item { display:flex; align-items:center; gap:.9rem; }
+    .local-info-item a { font-size: 1rem;}
     .local-info-ic { width:15px; height:15px; color:rgba(241,239,234,.28); flex-shrink:0; }
     .local-info-tx { font-size:.88rem; font-weight:300; color:rgba(241,239,234,.48); }
     .local-ctas { display:flex; gap:1rem; flex-wrap:wrap; }
@@ -468,6 +507,8 @@
       transition:transform .9s ease;
     }
     .local-photo:hover img { transform:scale(1.04); }
+    .map-wrap { display:inline-block; margin-top:2rem; }
+    .map-wrap iframe { display:block; border:0; filter:grayscale(1) sepia(.24) hue-rotate(50deg) contrast(.95) brightness(.8); }
     .local-overlay {
       position:absolute; inset:0; z-index:1;
       background:linear-gradient(to right, rgba(30,47,40,.3) 0%, transparent 50%);
@@ -483,7 +524,7 @@
       display:flex; align-items:center; justify-content:space-between;
       gap:2rem; flex-wrap:wrap;
     }
-    .footer-logo img { height:5rem; width:auto; opacity:.55; filter:brightness(0) invert(1); }
+    .footer-logo img { height:3rem; width:auto; opacity:.55; filter:brightness(0) invert(1); }
     .footer-nav { display:flex; gap:2.4rem; list-style:none; }
     .footer-nav a {
       font-size:.68rem; font-weight:400; letter-spacing:.18em; text-transform:uppercase;
@@ -494,7 +535,7 @@
     .footer-social { display:flex; gap:1rem; }
     .footer-social a { color:rgba(241,239,234,.27); transition:color .2s; cursor:pointer; }
     .footer-social a:hover { color:rgba(241,239,234,.7); }
-    .footer-copy { font-size:.6rem; letter-spacing:.14em; color:rgba(241,239,234,.18); }
+    .footer-copy { font-size:.8rem; letter-spacing:.14em; color:rgba(241,239,234,.18); }
 
     /* ─── ANIM INIT ─── */
     .ai { opacity:0; }
@@ -594,8 +635,8 @@
       <div class="hero-bg">
         <img
           id="hero-photo"
-          src="img/bg2.jpg"
-          alt="Persona con indumentaria outdoor en la Patagonia"
+          src="img/hero1.jpg"
+          alt="Mujer con campera verde y mochila de trekking contemplando un volcán nevado en la Patagonia"
           loading="eager"
         />
       </div>
@@ -614,7 +655,7 @@
             Vestí la <br/>montaña.
           </h1>
           <p class="hero-desc" id="h-desc">
-            Multimarca de indumentaria outdoor y lifestyle en el corazón de la Patagonia andina. Ropa técnica y de estilo, para el sendero y la ciudad.
+            Multimarca de indumentaria outdoor y lifestyle en el corazón de la Patagonia andina. Ropa técnica y con estilo, pensada para el sendero y la ciudad.
           </p>
           <div class="hero-ctas" id="h-ctas">
             <a href="https://www.instagram.com/puelchesma/" target="_blank" rel="noopener" class="btn btn-p">
@@ -687,15 +728,16 @@
 
       <div class="nos-tri-side">
         <img
-          src="img/img1.jpg"
-          alt="Paisaje patagónico" loading="lazy"
+          src="img/img-l2.jpg"
+          alt="Mujer con hoodie y bermuda de jean sentada al aire libre" loading="lazy"
+          style="object-position:top;"
         />
       </div>
 
       <div class="nos-tri-center">
         <img
-          src="img/img7.jpg"
-          alt="Sendero en el bosque" loading="lazy"
+          src="img/img-c.jpg"
+          alt="Hombre con campera outdoor organizando su mochila a orillas de un lago glaciar con montañas nevadas" loading="lazy"
         />
         <div class="nos-tri-overlay" style="display: none;">
           <h2 class="nos-tri-h2 ai" id="nos-b-h">
@@ -707,7 +749,9 @@
       <div class="nos-tri-side">
         <img
           src="img/img4.jpeg"
-          alt="Cordillera patagónica" loading="lazy"
+          alt="Hombre de espaldas con remera Ombak caminando entre girasoles al atardecer" loading="lazy"
+          
+          style="object-position:bottom;"
         />
       </div>
 
@@ -739,25 +783,25 @@
         <span class="pilar-num" aria-hidden="true">01</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="pilar-icon" aria-hidden="true"><path d="M3 17l6-10 3 4 2-3 7 9H3z"/><path d="M3 20h18"/></svg>
         <div class="pilar-name">Naturaleza</div>
-        <p class="pilar-desc">El monte, los ríos y la cordillera. Vivimos el entorno que viste la ropa que vendemos.</p>
+        <p class="pilar-desc">El monte, los ríos y la cordillera. Vivimos el entorno para el que está hecha la ropa que vendemos.</p>
       </div>
       <div class="pilar ai pilar-item">
         <span class="pilar-num" aria-hidden="true">02</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="pilar-icon" aria-hidden="true"><circle cx="12" cy="5" r="1"/><path d="M10 11l2-6 2 6"/><path d="M7 21l3-5 2 2 2-2 3 5"/><path d="M9 11H7l-1 4h2M15 11h2l1 4h-2"/></svg>
         <div class="pilar-name">Trekking</div>
-        <p class="pilar-desc">Prendas que aguantan senderos reales. Técnica, abrigo y funcionalidad sin resignar estilo.</p>
+        <p class="pilar-desc">Prendas que aguantan senderos reales. Diseño técnico, abrigo y funcionalidad sin resignar estilo.</p>
       </div>
       <div class="pilar ai pilar-item">
         <span class="pilar-num" aria-hidden="true">03</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="pilar-icon" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         <div class="pilar-name">Estilo</div>
-        <p class="pilar-desc">Curadamos marcas con diseño y carácter. Porque la indumentaria outdoor también puede ser hermosa.</p>
+        <p class="pilar-desc">Curamos marcas con diseño y carácter. Porque la indumentaria outdoor también puede ser hermosa.</p>
       </div>
       <div class="pilar ai pilar-item">
         <span class="pilar-num" aria-hidden="true">04</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="pilar-icon" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
         <div class="pilar-name">Aventura</div>
-        <p class="pilar-desc">Más que una tienda, un punto de encuentro para los que se mueven, exploran y visten bien haciéndolo.</p>
+        <p class="pilar-desc">Más que una tienda. Un punto de encuentro para quienes se mueven, exploran y quieren verse bien haciéndolo.</p>
       </div>
     </div>
   </section>
@@ -772,18 +816,53 @@
         </h2>
       </div>
       <p class="marcas-sub">
-        Indumentaria curada. Solo marcas que entienden el movimiento, el clima y el diseño.
+        Trabajamos con marcas técnicas seleccionadas para la montaña y la vida en la Patagonia.
       </p>
     </div>
     <div class="marcas-grid">
-      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 01</span></div>
-      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 02</span></div>
-      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 03</span></div>
-      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 04</span></div>
-      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 05</span></div>
-      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 06</span></div>
-      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 07</span></div>
-      <div class="brand-card ai brand-item"><span class="brand-ph">Marca 08</span></div>
+      <div class="brand-card ai brand-item"><img
+        src="marcas/ripcurl-logo.svg"
+        alt="Ripcurl"
+        loading="lazy"
+      /></div>
+      <div class="brand-card ai brand-item"><img
+        src="marcas/volcom-logo.svg"
+        alt="Volcom"
+        loading="lazy"
+        style="max-height:5rem"
+      /></div>
+      <div class="brand-card ai brand-item"><img
+        src="marcas/billabong-logo.svg"
+        alt="Billabong"
+        loading="lazy"
+      /></div>
+      <div class="brand-card ai brand-item"><img
+        src="marcas/logo_oneill.svg"
+        alt="O'neill"
+        loading="lazy"
+      /></div>
+      <div class="brand-card ai brand-item"><!--<img
+        src="marcas/montagne-logo.svg"
+        alt="Montagne"
+        loading="lazy"
+      />--><div style="text-align: center; font-size:1.1rem">Nueva marca <br/> próximamente</div></div>
+      <div class="brand-card ai brand-item"><img
+        src="marcas/circa-logo.png"
+        alt="C1rca"
+        loading="lazy"
+        style="max-height:2.5rem"
+      /></div>
+      <div class="brand-card ai brand-item"><img
+        src="marcas/ombak-logo.avif"
+        alt="Ombak"
+        loading="lazy"
+      /></div>
+      <div class="brand-card ai brand-item"><img
+        src="marcas/martha-logo.svg"
+        alt="Martha"
+        loading="lazy"
+        style="max-height:3.2rem"
+      /></div>
     </div>
   </section>
 
@@ -796,16 +875,16 @@
           Estamos en<br/><em>San Martín<br/>de los Andes.</em>
         </h2>
         <p class="local-desc">
-          Vení a ver y probar la ropa. Tenemos local físico con toda la colección disponible. También por Instagram y WhatsApp respondemos al toque.
+          Vení a conocer y probar la colección. Tenemos local físico con todas las marcas disponibles.
         </p>
         <div class="local-info">
           <div class="local-info-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="local-info-ic" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span class="local-info-tx">San Martín de los Andes, Neuquén · Patagonia</span>
+            <span class="local-info-tx"><a href="https://maps.app.goo.gl/W8NLMB5AYRznxNE47" target="_blank">Av. San Martín 973, San Martín de los Andes, Neuquén</a></span>
           </div>
           <div class="local-info-item">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="local-info-ic" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            <span class="local-info-tx">@puelchesma</span>
+            <a href="https://www.instagram.com/puelchesma/" target="_blank" rel="noopener" class="local-info-tx">@puelchesma</a>
           </div>
         </div>
         <div class="local-ctas">
@@ -819,12 +898,15 @@
           </a>
         </div>
       </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48800.56848293873!2d-71.32755486438482!3d-40.14149228570197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96110e773721398d%3A0xccb075b537506a4a!2sPuelche!5e0!3m2!1ses!2sar!4v1772682438105!5m2!1ses!2sar&z=20" width="450" height="230" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
     <!-- Photo -->
     <div class="local-photo">
       <img
-        src="img/montania.png"
-        alt="Lago y montañas de San Martín de los Andes"
+        src="img/sanma.jpg"
+        alt="Lago patagónico con reflejo de montañas nevadas y árboles"
         loading="lazy"
       />
       <div class="local-overlay" aria-hidden="true"></div>
@@ -889,8 +971,9 @@
     // ─── Nav ─────────────────────────────────────────────
     const nav = document.getElementById('nav');
 
+    nav.classList.toggle('scrolled', window.scrollY > 20);
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 80);
+      nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
     // ─── Hero entrance ───────────────────────────────────
@@ -909,13 +992,15 @@
     gsap.to('#hero-photo', { scale:1, duration:2.5, ease:'power2.out', delay:.1 });
 
     // Hero photo scroll parallax
-    gsap.to('#hero-photo', {
-      yPercent: 16,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#inicio', start:'top top', end:'bottom top', scrub:1.5,
-      }
-    });
+    function updateHeroParallax() {
+      const rect = document.getElementById('inicio').getBoundingClientRect();
+      const yPercent = (rect.top <= 0 && rect.bottom >= 0)
+        ? (-rect.top / rect.height) * 16
+        : 0;
+      gsap.set('#hero-photo', { yPercent });
+    }
+    window.addEventListener('scroll', updateHeroParallax, { passive: true });
+    updateHeroParallax();
 
     // Parallax quote reveal
     gsap.fromTo('#pq',
