@@ -1,0 +1,27 @@
+{
+  "name": "Puelche — Indumentaria Outdoor",
+  "short_name": "Puelche",
+  "description": "Multimarca de indumentaria outdoor lifestyle en el corazón de la Patagonia andina. San Martín de los Andes.",
+  "start_url": "https://puelcheindumentaria.com/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1E2F28",
+  "background_color": "#F1EFEA",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["shopping", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "img/hero1.jpg",
+      "sizes": "540x720",
+      "type": "image/jpeg"
+    }
+  ]
+}

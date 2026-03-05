@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /bin/
+Disallow: /logos/
+
+Sitemap: https://puelcheindumentaria.com/sitemap.xml
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+
+# Bing-specific
+User-agent: Bingbot
+Allow: /
